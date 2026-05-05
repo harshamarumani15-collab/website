@@ -1,27 +1,31 @@
-```
+```gitignore
 # Dependencies
 node_modules/
 
 # Build outputs
 dist/
 build/
-coverage/
-htmlcov/
+*.js.map
+*.css.map
 
 # Environment variables
 .env
 .env.local
-.env.*
+*.env.*
 
-# IDE files
+# IDE specific
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
 # Logs
 *.log
+
+# Coverage reports
+coverage/
+htmlcov/
+*.coverage
 
 # Python specific
 __pycache__/
@@ -30,14 +34,18 @@ __pycache__/
 *.pyd
 .Python
 *.so
-.coverage
+*.egg-info/
+.eggs/
 
-# Node.js specific
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
 
-# VCS ignored files
-.git/
-.gitignore
+# Testing
+.pytest_cache/
+.mypy_cache/
+.nyc_output/
+coverage/
 ```

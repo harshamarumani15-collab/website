@@ -1,22 +1,41 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { Bike, CarFront, Truck, Clock, MapPin, Phone, Mail, Star, Shield, Zap, Users } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Bike, CarFront, Truck, Clock, MapPin, Phone, Mail, Star, Shield, Zap, Users, Menu, X, ChevronDown, ChevronUp, CheckCircle, AlertCircle, Loader } from 'lucide-react'
 import './App.css'
 
-// Header Component
+// Header Component with Mobile Menu
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location])
+
   return (
     <header className="header">
       <div className="container">
         <nav className="nav">
           <Link to="/" className="logo">Rapido</Link>
-          <ul className="nav-links">
+          
+          {/* Desktop Navigation */}
+          <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/services">Services</Link></li>
             <li><Link to="/booking">Book Now</Link></li>
+            <li><Link to="/become-captain">Become a Captain</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="mobile-menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </nav>
       </div>
     </header>
@@ -422,6 +441,143 @@ function ContactPage() {
   )
 }
 
+// Become a Captain Page Component
+function BecomeCaptainPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    city: '',
+    vehicleType: 'bike',
+    vehicleNumber: '',
+    licenseNumber: ''
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert('Thank you for registering as a captain! Our team will contact you within 24 hours.')
+    setFormData({ name: '', phone: '', city: '', vehicleType: 'bike', vehicleNumber: '', licenseNumber: '' })
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  return (
+    <section className="booking">
+      <div className="container">
+        <h2 className="section-title">Become a Rapido Captain</h2>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ background: '#fff', padding: '30px', borderRadius: '12px', marginBottom: '40px', boxShadow: 'var(--shadow)' }}>
+            <h3 style={{ fontSize: '24px', marginBottom: '20px', color: 'var(--primary-black)' }}>Why Become a Captain?</h3>
+            <div className="features-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+              <div className="feature-item" style={{ padding: '20px' }}>
+                <CheckCircle size={40} color="#ffc107" />
+                <h4 style={{ marginTop: '15px', marginBottom: '10px' }}>Earn Up to ₹30,000/month</h4>
+                <p style={{ fontSize: '14px', color: 'var(--secondary-gray)' }}>Flexible earning potential based on your time commitment</p>
+              </div>
+              <div className="feature-item" style={{ padding: '20px' }}>
+                <Clock size={40} color="#ffc107" />
+                <h4 style={{ marginTop: '15px', marginBottom: '10px' }}>Flexible Hours</h4>
+                <p style={{ fontSize: '14px', color: 'var(--secondary-gray)' }}>Work whenever you want, be your own boss</p>
+              </div>
+              <div className="feature-item" style={{ padding: '20px' }}>
+                <Zap size={40} color="#ffc107" />
+                <h4 style={{ marginTop: '15px', marginBottom: '10px' }}>Weekly Payouts</h4>
+                <p style={{ fontSize: '14px', color: 'var(--secondary-gray)' }}>Get paid directly to your bank account every week</p>
+              </div>
+              <div className="feature-item" style={{ padding: '20px' }}>
+                <Shield size={40} color="#ffc107" />
+                <h4 style={{ marginTop: '15px', marginBottom: '10px' }}>Free Insurance</h4>
+                <p style={{ fontSize: '14px', color: 'var(--secondary-gray)' }}>Accidental insurance coverage while on duty</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 style={{ fontSize: '24px', marginBottom: '20px', color: 'var(--primary-black)', textAlign: 'center' }}>Register Now</h3>
+          <form className="booking-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Full Name</label>
+              <input 
+                type="text" 
+                name="name" 
+                value={formData.name} 
+                onChange={handleChange}
+                placeholder="Enter your full name" 
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Phone Number</label>
+              <input 
+                type="tel" 
+                name="phone" 
+                value={formData.phone} 
+                onChange={handleChange}
+                placeholder="Enter your 10-digit mobile number" 
+                className="form-control"
+                pattern="[0-9]{10}"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>City</label>
+              <input 
+                type="text" 
+                name="city" 
+                value={formData.city} 
+                onChange={handleChange}
+                placeholder="Enter your city" 
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Vehicle Type</label>
+              <select 
+                name="vehicleType" 
+                value={formData.vehicleType} 
+                onChange={handleChange}
+                className="form-control"
+              >
+                <option value="bike">Motorcycle</option>
+                <option value="scooter">Scooter</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Vehicle Number</label>
+              <input 
+                type="text" 
+                name="vehicleNumber" 
+                value={formData.vehicleNumber} 
+                onChange={handleChange}
+                placeholder="KA01AB1234" 
+                className="form-control"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Driving License Number</label>
+              <input 
+                type="text" 
+                name="licenseNumber" 
+                value={formData.licenseNumber} 
+                onChange={handleChange}
+                placeholder="Enter your DL number" 
+                className="form-control"
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+              Submit Registration
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function App() {
   return (
     <Router>
@@ -432,6 +588,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/booking" element={<BookingPage />} />
+            <Route path="/become-captain" element={<BecomeCaptainPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
