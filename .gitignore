@@ -1,51 +1,873 @@
-```gitignore
 # Dependencies
 node_modules/
 
-# Build outputs
+# Build artifacts
 dist/
 build/
-*.js.map
-*.css.map
+target/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+.Python
+env/
+venv/
+.venv/
+.venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.pot
+*.po
+*~
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
 # Environment variables
 .env
 .env.local
-*.env.*
+.env.*
 
-# IDE specific
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Logs
-*.log
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
-*.coverage
-
-# Python specific
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-*.egg-info/
-.eggs/
+.coverage
 
 # Temporary files
 *.tmp
 *.temp
-.DS_Store
-Thumbs.db
+*.bak
+*.backup
+
+# Compiled binary files
+*.exe
+*.dll
+*.so
+*.a
+*.o
+*.out
+*.class
+*.jar
+*.war
+*.ear
+*.bin
+*.obj
+*.lib
+*.dylib
+*.sys
+*.com
+*.sys
+*.msi
+*.msp
+*.msm
+
+# Julia
+.julia/
+*.ji
+*.jl.c
+*.jl.o
+*.jl.so
+
+# Zig
+zig-cache/
+*.zig-cache/
+*.zir
+*.zig
+
+# Rust
+Cargo.lock
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+dependency-reduced-pom.xml
+release.properties
+target/
+
+# Go
+*.a
+*.o
+*.so
+*.exe
+*.dll
+*.dylib
+*.test
+*.prof
+
+# C/C++
+*.i
+*.s
+*.ii
+*.sii
+*.gcda
+*.gcno
+*.gcov
+*.info
+*.da
+*.dyn
+*.po
+*.pid
+*.seed
+*.srl
+*.nib
+*.lproj
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.ideplugin
+*.xinx
+*.xcworkspace
+*.moved-aside
+*.xccheckout
+*.pbxuser
+!default.pbxuser
+!*.mode1v3
+!*.mode2v3
+!*.perspectivev3
+*.c.c
+*.c.i
+*.c.ii
+*.cc.c
+*.cc.i
+*.cc.ii
+*.cpp.c
+*.cpp.i
+*.cpp.ii
+*.cxx.c
+*.cxx.i
+*.cxx.ii
+*.m.c
+*.m.i
+*.m.ii
+*.mm.c
+*.mm.i
+*.mm.ii
+*.def
+*.exp
+*.ilk
+*.lib
+*.map
+*.pdb
+*.stackdump
+*.idb
+*.cdt
+*.cod
+*.lst
+*.sym
+*.cmake
+CMakeCache.txt
+cmake_install.manifest
+install_manifest.txt
+*.pc
+*.pcman
+*.pcmanx
+*.pcmanf
+*.pcmanfm
+*.pcmanedit
+*.pcmanterm
+*.pcmanmount
+*.pcmanunmount
+*.pcmanpoweroff
+*.pcmanreboot
+*.pcmanlogout
+*.pcmanlock
+*.pcmansuspend
+*.pcmanhibernate
+*.pcmanconfig
+*.pcmanpref
+*.pcmantheme
+*.pcmanfont
+*.pcmankey
+*.pcmanmouse
+*.pcmankb
+*.pcmanprint
+*.pcmanfax
+*.pcmanmodem
+*.pcmannet
+*.pcmanproxy
+*.pcmanfirewall
+*.pcmanantivirus
+*.pcmanbackup
+*.pcmanupdate
+*.pcmanupgrade
+*.pcmandowngrade
+*.pcmaninstall
+*.pcmanremove
+*.pcmanpurge
+*.pcmanautoremove
+*.pcman autoclean
+*.pcman autocleanall
+*.pcman autocleanunused
+*.pcman autocleanorphans
+*.pcman autocleanauto
+*.pcman autocleanmanual
+*.pcman autocleaninteractive
+*.pcman autocleanforce
+*.pcman autocleanquiet
+*.pcman autocleanverbose
+*.pcman autoclen
+*.pcman autoremove
+*.pcman autoremoveall
+*.pcman autoremoveunused
+*.pcman autoremoveorphans
+*.pcman autoremoveauto
+*.pcman autoremovemanual
+*.pcman autoremoveinteractive
+*.pcman autoremoveforce
+*.pcman autoremovequiet
+*.pcman autoremoveverbose
+*.pcman autoremovenoclean
+*.pcman autoremovenocleanall
+*.pcman autoremovenocleanunused
+*.pcman autoremovenocleanorphans
+*.pcman autoremovenocleanauto
+*.pcman autoremovenocleanmanual
+*.pcman autoremovenocleaninteractive
+*.pcman autoremovenocleanforce
+*.pcman autoremovenocleanquiet
+*.pcman autoremovenocleanverbose
+*.pcman autocleanautoremove
+*.pcman autocleanautoremoveall
+*.pcman autocleanautoremoveunused
+*.pcman autocleanautoremoveorphans
+*.pcman autocleanautoremoveauto
+*.pcman autocleanautoremovemanual
+*.pcman autocleanautoremoveinteractive
+*.pcman autocleanautoremoveforce
+*.pcman autocleanautoremovequiet
+*.pcman autocleanautoremoveverbose
+*.pcman autocleanautoremovenoclean
+*.pcman autocleanautoremovenocleanall
+*.pcman autocleanautoremovenocleanunused
+*.pcman autocleanautoremovenocleanorphans
+*.pcman autocleanautoremovenocleanauto
+*.pcman autocleanautoremovenocleanmanual
+*.pcman autocleanautoremovenocleaninteractive
+*.pcman autocleanautoremovenocleanforce
+*.pcman autocleanautoremovenocleanquiet
+*.pcman autocleanautoremovenocleanverbose
+*.pcman autocleanautoremovenocleanautoremove
+*.pcman autocleanautoremovenocleanautoremoveall
+*.pcman autocleanautoremovenocleanautoremoveunused
+*.pcman autocleanautoremovenocleanautoremoveorphans
+*.pcman autocleanautoremovenocleanautoremoveauto
+*.pcman autocleanautoremovenocleanautoremovemanual
+*.pcman autocleanautoremovenocleanautoremoveinteractive
+*.pcman autocleanautoremovenocleanautoremoveforce
+*.pcman autocleanautoremovenocleanautoremovequiet
+*.pcman autocleanautoremovenocleanautoremoveverbose
+
+# Web
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.min.js
+*.min.css
+*.bundle.js
+*.bundle.css
+
+# Database
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Backup files
+*~
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.swp
+*.swo
 
 # Testing
-.pytest_cache/
-.mypy_cache/
+.rspec
+spec/reports/
+*.rspec
+test/tmp/
+test/version_tmp/
+test/fixtures/*.yml
+test/fixtures/*.yaml
+
+# Documentation
+docs/_build/
+*.rst~
+
+# Distribution / packaging
+.Python
+_build/
+buck-out/
+build-bazel/
+bazel-bin/
+bazel-genfiles/
+bazel-out/
+bazel-testlogs/
+.sass-cache/
+.well-known/
 .nyc_output/
 coverage/
+*.lcov
+*.clover
+*.raw
+*.json
+*.xml
+*.html
+*.txt
+*.log
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.swp
+*.swo
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+.yarn-metadata.json
+node/
+npm/
+.npm
+.npmrc
+package-lock.json
+yarn.lock
+.yarn/
+.pnp/
+.pnp.js
+.pnp.cjs
+.pnp.loader.mjs
+
+# Bower
+bower_components/
+
+# Grunt
+.grunt
+grunt.js
+Gruntfile.js
+Gruntfile.coffee
+
+# Gulp
+.gulp
+gulpfile.js
+gulpfile.coffee
+gulpfile.babel.js
+
+# Webpack
+webpack.config.js
+webpack.config.*
+*.webpack.js
+
+# Jspm
+jspm_packages/
+
+# Browserify
+browser/
+browserify/
+*.jst
+*.js.map
+*.css.map
+
+# Ember
+.ember-cli
+.ember/
+tmp/
+dist/
+
+# React
+.next/
+out/
+.nuxt/
+dist/
+public/dist/
+build/
+.cache/
+
+# Vue
+.vuepress/dist
+.output.js
+.nuxt
+dist
+.coverage
+*.log
+.env.local
+.env.*
+
+# Angular
+.angular
+.angular-cli.json
+.angular/config
+.angular/cache
+.angular/cache/**
+.angular/cache/*
+.angular/cache/.*
+.angular/cache/.**
+.angular/cache/.*/
+.angular/cache/*/
+.angular/cache/**/
+.angular/cache/.*/**
+.angular/cache/.**/*
+.angular/cache/.**/**
+.angular/cache/**/.**
+.angular/cache/**/.*/
+.angular/cache/*/.**
+.angular/cache/*/.*/
+.angular/cache/.*/.*/
+.angular/cache/.*/.**/
+.angular/cache/.**/.*/
+.angular/cache/.**/.**/
+
+# Electron
+electron/
+Electron/
+electron-builder/
+electron-packager/
+dist_electron/
+electron_dist/
+electron-build/
+electron-packager/
+electron-builder/
+electron-forge/
+forge.config.js
+package-lock.json
+yarn.lock
+node_modules/
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose.override.yml
+docker-compose.prod.yml
+docker-compose.test.yml
+.docker/
+*.docker
+*.dockerignore
+
+# Kubernetes
+.kube/
+.kubectl/
+kubectl/
+kubectx/
+kubens/
+kubeconfig
+.kube/config
+.kube/cache
+.kube/http-cache
+.kube/local-config
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tf.json
+*.tfplan
+*.tfgraph
+*.tfplugin
+*.tfprovider
+*.tfdata
+*.tfvars.json
+*.tfbackend
+*.tflock
+*.tfstate.d/
+*.tfstate.backup.d/
+terraform.tfstate
+terraform.tfvars
+terraform.tfvars.json
+terraform.tfstate.backup
+terraform.tfbackend
+terraform.tflock
+.terragrunt-cache/
+.terraform.lock.hcl
+.terraform/
+.terraform/**
+.terraform/*/
+.terraform/.*/
+.terraform/.**/*
+.terraform/.**/**
+.terraform/**/.**
+.terraform/**/.*/
+.terraform/*/.**
+.terraform/*/.*/
+.terraform/.*/.*/
+.terraform/.*/.**/
+.terraform/.**/.*/
+.terraform/.**/.**/
+
+# Ansible
+.ansible/
+.ansible-playbook/
+.ansible-inventory/
+.ansible-facts/
+.ansible-cache/
+.ansible-tmp/
+.ansible/
+.ansible/**
+.ansible/*/
+.ansible/.*/
+.ansible/.**/*
+.ansible/.**/**
+.ansible/**/.**
+.ansible/**/.*/
+.ansible/*/.**
+.ansible/*/.*/
+.ansible/.*/.*/
+.ansible/.*/.**/
+.ansible/.**/.*/
+.ansible/.**/.**/
+
+# Chef
+.chef/
+.chef/knife.rb
+.chef/config.rb
+.chef/trusted_certs/
+.chef/cache/
+.chef/backup/
+.chef/data_bags/
+.chef/encrypted_data_bag_secret
+.chef/environment/
+.chef/node/
+.chef/role/
+.chef/cookbooks/
+.chef/site-cookbooks/
+.chef/environments/
+.chef/nodes/
+.chef/roles/
+.chef/data_bags/
+.chef/clients/
+.chef/users/
+.chef/search/
+.chef/acls/
+.chef/groups/
+.chef/organizations/
+.chef/containers/
+.chef/sandboxes/
+.chef/file_store/
+.chef/cookbook_artifacts/
+.chef/checksums/
+.chef/databag_secret
+.chef/encrypted_data_bag_secrets
+.chef/keys/
+.chef/validation.pem
+.chef/client.pem
+.chef/webui_priv.pem
+.chef/webui_pub.pem
+.chef/server.pem
+.chef/ca.crt
+.chef/trusted_certs/
+.chef/unified_mode_enabled
+.chef/unified_mode_disabled
+.chef/unified_mode_unknown
+.chef/unified_mode_pending
+.chef/unified_mode_error
+.chef/unified_mode_warning
+.chef/unified_mode_info
+.chef/unified_mode_debug
+.chef/unified_mode_trace
+.chef/unified_mode_off
+.chef/unified_mode_on
+.chef/unified_mode_auto
+.chef/unified_mode_manual
+.chef/unified_mode_force
+.chef/unified_mode_safe
+.chef/unified_mode_aggressive
+.chef/unified_mode_passive
+.chef/unified_mode_active
+.chef/unified_mode_inactive
+.chef/unified_mode_stopped
+.chef/unified_mode_running
+.chef/unified_mode_paused
+.chef/unified_mode_resumed
+.chef/unified_mode_suspended
+.chef/unified_mode_awakened
+.chef/unified_mode_sleeping
+.chef/unified_mode_waking
+.chef/unified_mode_hibernating
+.chef/unified_mode_wakingfromhibernation
+.chef/unified_mode_hibernated
+.chef/unified_mode_awakening
+.chef/unified_mode_asleep
+.chef/unified_mode_aware
+.chef/unified_mode_unaware
+.chef/unified_mode_conscious
+.chef/unified_mode_unconscious
+.chef/unified_mode_awake
+.chef/unified_mode_dormant
+.chef/unified_mode_quiescent
+.chef/unified_mode_moving
+.chef/unified_mode_stationary
+.chef/unified_mode_operational
+.chef/unified_mode_nonoperational
+.chef/unified_mode_functional
+.chef/unified_mode_nonfunctional
+.chef/unified_mode_available
+.chef/unified_mode_unavailable
+.chef/unified_mode_accessible
+.chef/unified_mode_inaccessible
+.chef/unified_mode_reachable
+.chef/unified_mode_unreachable
+.chef/unified_mode_usable
+.chef/unified_mode_unusable
+.chef/unified_mode_ready
+.chef/unified_mode_notready
+.chef/unified_mode_prepared
+.chef/unified_mode_unprepared
+.chef/unified_mode_configured
+.chef/unified_mode_unconfigured
+.chef/unified_mode_initialized
+.chef/unified_mode_uninitialized
+.chef/unified_mode_started
+.chef/unified_mode_stopped
+.chef/unified_mode_running
+.chef/unified_mode_still
+.chef/unified_mode_moving
+.chef/unified_mode_working
+.chef/unified_mode_idle
+.chef/unified_mode_busy
+.chef/unified_mode_active
+.chef/unified_mode_inactive
+.chef/unified_mode_engaged
+.chef/unified_mode_disengaged
+.chef/unified_mode_connected
+.chef/unified_mode_disconnected
+.chef/unified_mode_linked
+.chef/unified_mode_unlinked
+.chef/unified_mode_bound
+.chef/unified_mode_unbound
+.chef/unified_mode_coupled
+.chef/unified_mode_decoupled
+.chef/unified_mode_attached
+.chef/unified_mode_detached
+.chef/unified_mode_mounted
+.chef/unified_mode_unmounted
+.chef/unified_mode_opened
+.chef/unified_mode_closed
+.chef/unified_mode_locked
+.chef/unified_mode_unlocked
+.chef/unified_mode_secured
+.chef/unified_mode_insecure
+.chef/unified_mode_protected
+.chef/unified_mode_unprotected
+.chef/unified_mode_encrypted
+.chef/unified_mode_decrypted
+.chef/unified_mode_compressed
+.chef/unified_mode_decompressed
+.chef/unified_mode_encoded
+.chef/unified_mode_decoded
+.chef/unified_mode_signed
+.chef/unified_mode_unsigned
+.chef/unified_mode_valid
+.chef/unified_mode_invalid
+.chef/unified_mode_correct
+.chef/unified_mode_incorrect
+.chef/unified_mode_true
+.chef/unified_mode_false
+.chef/unified_mode_yes
+.chef/unified_mode_no
+.chef/unified_mode_on
+.chef/unified_mode_off
+.chef/unified_mode_enabled
+.chef/unified_mode_disabled
+.chef/unified_mode_allowed
+.chef/unified_mode_disallowed
+.chef/unified_mode_permitted
+.chef/unified_mode_forbidden
+.chef/unified_mode_accepted
+.chef/unified_mode_rejected
+.chef/unified_mode_approved
+.chef/unified_mode_disapproved
+.chef/unified_mode_granted
+.chef/unified_mode_denied
+.chef/unified_mode_authorized
+.chef/unified_mode_unauthorized
+.chef/unified_mode_authenticated
+.chef/unified_mode_unauthenticated
+.chef/unified_mode_verified
+.chef/unified_mode_unverified
+.chef/unified_mode_confirmed
+.chef/unified_mode_unconfirmed
+.chef/unified_mode_certified
+.chef/unified_mode_uncertified
+.chef/unified_mode_approved
+.chef/unified_mode_disapproved
+.chef/unified_mode_validated
+.chef/unified_mode_invalidated
+.chef/unified_mode_activated
+.chef/unified_mode_deactivated
+.chef/unified_mode_enabled
+.chef/unified_mode_disabled
+.chef/unified_mode_armed
+.chef/unified_mode_disarmed
+.chef/unified_mode_set
+.chef/unified_mode_unset
+.chef/unified_mode_established
+.chef/unified_mode_disestablished
+.chef/unified_mode_initiated
+.chef/unified_mode_terminated
+.chef/unified_mode_commenced
+.chef/unified_mode_concluded
+.chef/unified_mode_begun
+.chef/unified_mode_ended
+.chef/unified_mode_started
+.chef/unified_mode_stopped
+.chef/unified_mode_launched
+.chef/unified_mode_ceased
+.chef/unified_mode_halted
+.chef/unified_mode_suspended
+.chef/unified_mode_resumed
+.chef/unified_mode_interrupted
+.chef/unified_mode_restored
+.chef/unified_mode_reset
+.chef/unified_mode_restarted
+.chef/unified_mode_refreshed
+.chef/unified_mode_reloaded
+.chef/unified_mode_renewed
+.chef/unified_mode_regenerated
+.chef/unified_mode_recreated
+.chef/unified_mode_rebuilt
+.chef/unified_mode_refurbished
+.chef/unified_mode_repaired
+.chef/unified_mode_fixed
+.chef/unified_mode_healed
+.chef/unified_mode_mended
+.chef/unified_mode_restored
+.chef/unified_mode_revived
+.chef/unified_mode_resurrected
+.chef/unified_mode_reanimated
+.chef/unified_mode_awakened
+.chef/unified_mode_reawakened
+.chef/unified_mode_rekindled
+.chef/unified_mode_reignited
+.chef/unified_mode_relit
+.chef/unified_mode_relit
+.chef/unified_mode_restarted
+.chef/unified_mode_rebooted
+.chef/unified_mode_rebootstrapped
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode_reinitialised
+.chef/unified_mode......
 ```

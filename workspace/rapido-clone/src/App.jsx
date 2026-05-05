@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
 import { Bike, CarFront, Truck, Clock, MapPin, Phone, Mail, Star, Shield, Zap, Users, Menu, X, ChevronDown, ChevronUp, CheckCircle, AlertCircle, Loader } from 'lucide-react'
+import heroImage from './assets/hero.png'
 import './App.css'
 
 // Header Component with Mobile Menu
@@ -99,6 +100,9 @@ function HomePage() {
           <div className="hero-buttons">
             <Link to="/booking" className="btn btn-primary">Book a Ride</Link>
             <Link to="/services" className="btn btn-secondary">Explore Services</Link>
+          </div>
+          <div className="hero-image">
+            <img src={heroImage} alt="Rapido bike taxi service" />
           </div>
         </div>
       </section>
