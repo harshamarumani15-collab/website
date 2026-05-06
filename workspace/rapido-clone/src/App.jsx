@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { Bike, CarFront, Truck, Clock, MapPin, Phone, Mail, Star, Shield, Zap, Users, Menu, X, ChevronDown, ChevronUp, CheckCircle, AlertCircle, Loader } from 'lucide-react'
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom'
+import { Bike, CarFront, Truck, Clock, MapPin, Phone, Mail, Star, Shield, Zap, Users, Menu, X, ChevronDown, ChevronUp, CheckCircle, AlertCircle, Loader, LogOut, User } from 'lucide-react'
 import heroImage from './assets/hero.png'
+import LoginPage from './components/LoginPage'
+import DynamicHomePage from './pages/DynamicHomePage'
+import { getCurrentUser, logout } from './services/authService'
 import './App.css'
 
 // Header Component with Mobile Menu
-function Header() {
+function Header({ user, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
-
+  
   useEffect(() => {
     setIsMenuOpen(false)
   }, [location])
@@ -28,6 +31,20 @@ function Header() {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
+
+          {/* User Section */}
+          {user && (
+            <div className="user-section">
+              <div className="user-info">
+                <User size={20} />
+                <span>{user.name || user.mobileNumber}</span>
+              </div>
+              <button className="btn-logout" onClick={onLogout}>
+                <LogOut size={18} />
+                Logout
+              </button>
+            </div>
+          )}
 
           {/* Mobile Menu Toggle */}
           <button 
@@ -582,25 +599,89 @@ function BecomeCaptainPage() {
   )
 }
 
+
+// Protected Route Component
+function ProtectedRoute({ children, user }) {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
 function App() {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Check for existing session on mount
+  useEffect(() => {
+    const currentUser = getCurrentUser();
+    if (currentUser) {
+      setUser(currentUser);
+    }
+    setLoading(false);
+  }, []);
+
+  const handleLoginSuccess = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-app">
+        <Loader className="spin" size={48} />
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <Router>
       <div className="app">
-        <Header />
+        <Header user={user} onLogout={handleLogout} />
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/booking" element={<BookingPage />} />
-            <Route path="/become-captain" element={<BecomeCaptainPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/login" element={!user ? <LoginPage onLoginSuccess={handleLoginSuccess} /> : <Navigate to="/" replace />} />
+            <Route path="/" element={
+              <ProtectedRoute user={user}>
+                <DynamicHomePage />
+              </ProtectedRoute>
+            } />
+            <Route path="/services" element={
+              <ProtectedRoute user={user}>
+                <ServicesPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/booking" element={
+              <ProtectedRoute user={user}>
+                <BookingPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/become-captain" element={
+              <ProtectedRoute user={user}>
+                <BecomeCaptainPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/about" element={
+              <ProtectedRoute user={user}>
+                <AboutPage />
+              </ProtectedRoute>
+            } />
+            <Route path="/contact" element={
+              <ProtectedRoute user={user}>
+                <ContactPage />
+              </ProtectedRoute>
+            } />
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
